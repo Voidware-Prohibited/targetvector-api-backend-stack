@@ -1,12 +1,23 @@
 {
   "compilerOptions": {
-    "target": "es2020",
-    "module": "commonjs",
+    "target": "ES2022",
+    //"target": "es2020", // Original setting
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    // "module": "commonjs", // Original setting
     "outDir": "./dist",
     "strict": true,
+    "declaration": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "allowImportingTsExtensions": true
   },
-  "include": ["./src/**/*.ts"]
+  "include": ["./src/**/*.ts", "src/types/environment.d.ts"],
+  "ts-node": {
+    "esm": true,
+    "transpileOnly": true
+  }
 }

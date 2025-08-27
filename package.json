@@ -1,6 +1,7 @@
 {
   "name": "targetvector-api-backend-stack",
   "version": "1.0.0",
+  "type": "module",
   "description": "Modern Backend stack using Express.js, MikroORM, Passport, OAuth2, Axios and HMAC.",
   "main": "index.js",
   "scripts": {
@@ -15,12 +16,14 @@
     "@mikro-orm/cli": "^6.4.16",
     "@mikro-orm/core": "^6.4.16",
     "@mikro-orm/postgresql": "^6.4.16",
+    "@mikro-orm/reflection": "^6.4.16",
     "axios": "^1.11.0",
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
     "express-prom-bundle": "^8.0.0",
     "passport-oauth2": "^1.8.0",
-    "pg": "^8.16.3"
+    "pg": "^8.16.3",
+    "uuid": "^11.1.0"
   },
   "devDependencies": {
     "@types/express": "^5.0.3",
