@@ -1,5 +1,4 @@
 import driver from '@mikro-orm/core';
-import { PostgreSqlDriver } from '@mikro-orm/postgresql'; // or other driver
 
 
 declare global {

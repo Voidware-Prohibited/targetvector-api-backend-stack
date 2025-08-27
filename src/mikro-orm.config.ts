@@ -1,5 +1,4 @@
 // mikro-orm.config.js
-import type { Options } from '@mikro-orm/core';
 import { defineConfig, PostgreSqlDriver } from '@mikro-orm/postgresql'; // or other driver
 import { TsMorphMetadataProvider } from '@mikro-orm/reflection';
 import * as DotEnv from 'dotenv';
@@ -9,7 +8,6 @@ DotEnv.config();
 export default defineConfig({
     metadataProvider: TsMorphMetadataProvider,
     dynamicImportProvider: (id) => import(id),
-    // driver: process.env.DB_TYPE,
     driver: PostgreSqlDriver,
     host: process.env.DB_HOST,
     port: Number(process.env.DB_PORT),
@@ -27,5 +25,3 @@ export default defineConfig({
         alwaysAnalyseProperties: false, // do not analyse properties when not needed (with ts-morph)
     }
 });
-
-// export default config;

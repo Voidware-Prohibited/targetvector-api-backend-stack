@@ -1,7 +1,6 @@
-import { defineConfig } from '@mikro-orm/core';
 import 'dotenv/config'; // Load .env file for the CLI
 import express from 'express';
-import { MikroORM, RequestContext, EntityManager, PostgreSqlDriver  } from '@mikro-orm/postgresql'; // or any other driver package
+import { MikroORM, RequestContext, EntityManager  } from '@mikro-orm/postgresql'; // or any other driver package
 import config from './mikro-orm.config.ts';
 import path from 'path';
 import apiRoutes from './routes/api.ts'; // Import API routes
