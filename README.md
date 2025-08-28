@@ -60,6 +60,8 @@ A Modern Secure API Backend for Target Vector Dedicated Servers.
 ### 📚 Backend
 
 - **Express.js** - a minimal and flexible Node.js web application framework.
+- **Hashicorp Vault** - Self-hosted or SaaS KMS.
+- **OAuth2** - Authentication for Users.
 - **MikroORM/Postgres** - TypeScript ORM for Node.js.
 - **Axios** - Promise based HTTP client for the browser and node.js.
 - **HMAC** - Cryptographically secured API transactions.
