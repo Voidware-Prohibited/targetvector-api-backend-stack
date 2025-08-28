@@ -5,9 +5,17 @@
   "description": "Modern Backend stack using Express.js, MikroORM, Passport, OAuth2, Axios and HMAC.",
   "main": "index.js",
   "scripts": {
+    "initial-setup": "pnpm run build && pnpm run migration:create -- --initial && pnpm run migration:up && pnpm run dev",
     "start": "node dist/index.js",
     "dev": "nodemon --exec ts-node src/index.ts",
-    "test": "echo \"Message: Tests not implmented yet.\" && exit 0"
+    "migration:create": "mikro-orm migration:create",
+    "migration:up": "mikro-orm migration:up",
+    "migration:fresh": "mikro-orm migration:fresh",
+    "schema:update": "mikro-orm schema:update -- --run",
+    "test": "echo \"Message: Tests not implmented yet.\" && exit 0",
+    "lint": "eslint \"./**/*.{js,ts}\"",
+    "lint:fix": "eslint \"./**/*.{js,ts}\" --fix",
+    "format": "prettier --write \"./**/*.{js,ts,json,md}\""
   },
   "keywords": [],
   "author": "VOIDWARE Prohibited, Uriel Ballinas",
@@ -15,12 +23,14 @@
   "dependencies": {
     "@mikro-orm/cli": "^6.4.16",
     "@mikro-orm/core": "^6.4.16",
+    "@mikro-orm/migrations": "6.4.16",
     "@mikro-orm/postgresql": "^6.4.16",
     "@mikro-orm/reflection": "^6.4.16",
     "axios": "^1.11.0",
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
     "express-prom-bundle": "^8.0.0",
+    "multer": "^2.0.2",
     "node-vault": "^0.10.5",
     "passport-oauth2": "^1.8.0",
     "pg": "^8.16.3",
@@ -28,10 +38,28 @@
   },
   "devDependencies": {
     "@types/express": "^5.0.3",
+    "@types/multer": "^2.0.0",
     "@types/node": "^24.3.0",
+    "@typescript-eslint/eslint-plugin": "^8.41.0",
+    "@typescript-eslint/parser": "^8.41.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.5",
     "nodemon": "^3.1.10",
+    "openapi-typescript": "^7.9.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.2",
     "vitest": "^3.2.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts}": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ]
   }
 }

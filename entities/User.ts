@@ -1,6 +1,6 @@
 import { v4 } from 'uuid';
-import {Entity, PrimaryKey, Property} from "@mikro-orm/core";
-
+import {Entity, PrimaryKey, Property, ManyToOne, Ref} from "@mikro-orm/core";
+import { Role } from './Role';
 
 @Entity()
 export class User {
@@ -13,6 +13,12 @@ export class User {
 
     @Property()
     password!: string;
+
+    @Property()
+    oauthId!: string; // ID from OAuth provider (e.g., Google)
+
+    @ManyToOne(() => Role, { wrappedReference: true })
+    role!: Ref<Role>;
 
     @Property({ onCreate: () => new Date() })
     createdAt!: Date;
