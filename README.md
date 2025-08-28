@@ -164,6 +164,7 @@ server/
 ## 🔧 Available Scripts
 
 - `pnpm run initial-setup` - Perform initial setup
+- `pnpm run prepare` - Prepare Husky Git Hooks
 - `pnpm run dev` - Start development server
 - `pnpm run test` - Run Test
 - `pnpm run migration:create` - Create Migration
@@ -220,4 +221,4 @@ Run `pnpm dlx mikro-orm migration:up` (or `pnpm dlx mikro-orm migration:fresh` f
 
 ## 📄 License
 
-This template is open source and available under the [MIT License](LICENSE).
+This project is open source and available under the [MIT License](LICENSE).
