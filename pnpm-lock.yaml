@@ -23,9 +23,15 @@ importers:
       '@mikro-orm/reflection':
         specifier: ^6.4.16
         version: 6.4.16(@mikro-orm/core@6.4.16)
+      '@types/body-parser':
+        specifier: ^1.19.6
+        version: 1.19.6
       axios:
         specifier: ^1.11.0
         version: 1.11.0
+      body-parser:
+        specifier: ^2.2.0
+        version: 2.2.0
       dotenv:
         specifier: ^17.2.1
         version: 17.2.1

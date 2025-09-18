@@ -3,6 +3,8 @@ import express from 'express';
 import multer from 'multer';
 import { MikroORM, RequestContext, EntityManager  } from '@mikro-orm/postgresql';
 import config from './mikro-orm.config.ts';
+import bodyParser from 'body-parser';
+import fs from 'fs';
 import path from 'path';
 import apiRoutes from './routes/api.ts'; // Import API routes
 
@@ -22,7 +24,22 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 const app = express();
+// Use body-parser middleware to handle JSON payloads
+app.use(bodyParser.json({ limit: '50mb' }));
 const port = process.env.SERVER_PORT || 3000;
+
+// Middleware to log incoming requests
+app.use((req, res, next) => {
+  console.log(`${new Date().toISOString()} - ${req.method} ${req.originalUrl}`);
+  next();
+});
+
+// Configure where to store replay files
+const replayDirectory = path.join(__dirname, 'replays');
+if (!fs.existsSync(replayDirectory)) {
+  fs.mkdirSync(replayDirectory);
+}
+
 export const orm = await MikroORM.init(config);
 
 async function initializeMikroORM() {
